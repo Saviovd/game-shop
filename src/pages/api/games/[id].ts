@@ -1,12 +1,24 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
+import dotenv from 'dotenv';
+dotenv.config();
 
-type Data = {
-   name: string;
-};
+const accessToken = process.env.ACCESS_TOKEN;
 
-export default function handler(
+export default async function getGameById(
    req: NextApiRequest,
-   res: NextApiResponse<Data>
+   res: NextApiResponse
 ) {
-   res.status(200).json({ name: 'John Doe' });
+   const {id} = req.query
+   try {
+      const ulrGames = `https://api.rawg.io/api/games/${id}?token&key=${accessToken}`;
+      fetch(ulrGames)
+         .then((res) => res.json())
+         .then((data) => {
+            res.status(200).json(data);
+         })
+         .catch((error) => console.error(error));
+   } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+   }
 }

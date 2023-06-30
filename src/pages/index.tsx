@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 interface IGameProps {
@@ -9,17 +10,17 @@ interface IGameProps {
 }
 
 export default function Home({}: object) {
-   const [isLoad, setIsload] = useState(false);
+   // const [isLoad, setIsload] = useState(false);
    const [data, setData] = useState<Array<IGameProps>>();
 
    useEffect(() => {
       async function getGames() {
          try {
             fetch('/api/games')
-            .then((res) => res.json())
-            .then((data) => {
-               setData(data);
-               setIsload(true);
+               .then((res) => res.json())
+               .then((data) => {
+                  setData(data);
+                  // setIsload(true);
                });
          } catch (error) {
             console.error(error);
@@ -47,13 +48,15 @@ export default function Home({}: object) {
                      <>
                         <p key={game.id}>{game.name}</p>
 
-                     {isLoad &&  <Image
-                           src={game.background_image}
-                           alt={`${game.name}`}
-                           width={100}
-                           height={100}
-                           style={{objectFit:'contain'}}
-                        />}
+                        <Link href={`/games/[id]`} as={`/games/${game.id}`}>
+                           <Image
+                              src={game.background_image}
+                              alt={`${game.name}`}
+                              width={100}
+                              height={100}
+                              style={{ objectFit: 'contain' }}
+                           />
+                        </Link>
                      </>
                   );
                })}
