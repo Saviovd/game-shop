@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const accessToken = process.env.ACCESS_TOKEN;
-const ulrGames = `https://api.rawg.io/api/games?token&key=${accessToken}&page_size=30`;
+const ulrGames = `https://api.rawg.io/api/games?token&key=${accessToken}&page_size=30&page=1`;
 
 export default async function handler(
    req: NextApiRequest,

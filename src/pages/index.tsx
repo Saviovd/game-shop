@@ -10,7 +10,7 @@ interface IGameProps {
 }
 
 export default function Home({}: object) {
-   // const [isLoad, setIsload] = useState(false);
+   const [isLoad, setIsload] = useState(false);
    const [data, setData] = useState<Array<IGameProps>>();
 
    useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home({}: object) {
                .then((res) => res.json())
                .then((data) => {
                   setData(data);
-                  // setIsload(true);
+                  setIsload(true)
                });
          } catch (error) {
             console.error(error);
@@ -29,6 +29,9 @@ export default function Home({}: object) {
 
       getGames();
    }, []);
+   if (!isLoad) {
+      return <p>CARREGANDO...</p>
+   }
 
    return (
       <>
@@ -49,13 +52,15 @@ export default function Home({}: object) {
                         <p key={game.id}>{game.name}</p>
 
                         <Link href={`/games/[id]`} as={`/games/${game.id}`}>
-                           <Image
-                              src={game.background_image}
-                              alt={`${game.name}`}
-                              width={100}
-                              height={100}
-                              style={{ objectFit: 'contain' }}
-                           />
+                           {game.background_image && (
+                              <Image
+                                 src={game.background_image}
+                                 alt={`${game.name}`}
+                                 width={100}
+                                 height={100}
+                                 style={{ objectFit: 'contain' }}
+                              />
+                           )}
                         </Link>
                      </>
                   );
