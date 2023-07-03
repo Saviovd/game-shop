@@ -2,6 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
+:root {
+   --black: 37, 37, 37;
+   --white: 249, 249, 249;
+   --purple: 105, 48, 195;
+   --blue: 100, 223, 223;
+   --green: 128, 255, 219;
+
+}
+
 html {
    font-size: 10px;
    body {
@@ -9,6 +18,7 @@ html {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      background-color: rgb(var(--black));
 
       div {
          margin: 0;
