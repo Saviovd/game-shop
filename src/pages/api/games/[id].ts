@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dotenv from 'dotenv';
-dotenv.config();
+import { ACCESS_TOKEN } from '../config';
 
-const accessToken = process.env.ACCESS_TOKEN;
 
 export default async function getGameById(
    req: NextApiRequest,
@@ -10,7 +8,7 @@ export default async function getGameById(
 ) {
    const {id} = req.query
    try {
-      const ulrGames = `https://api.rawg.io/api/games/${id}?token&key=${accessToken}`;
+      const ulrGames = `https://api.rawg.io/api/games/${id}?token&key=${ACCESS_TOKEN}`;
       fetch(ulrGames)
          .then((res) => res.json())
          .then((data) => {
