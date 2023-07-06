@@ -10,7 +10,7 @@ const inter = Inter({
 
 export default function Home({}: object) {
    // const [isLoad, setIsload] = useState(false);
-   const pages = [1, 2, 3];
+   const pages = [1];
 
 
    // if (!isLoad) {

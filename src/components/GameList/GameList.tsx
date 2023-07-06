@@ -2,7 +2,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { GameListStyle } from './gameListStyles';
 import Card from '../Card/Card';
 import { useEffect, useState } from 'react';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
 
 interface IGameProps {
    id: number;
@@ -40,7 +42,40 @@ const GameList = ({ page }: IGameListProps) => {
 
    return (
       <GameListStyle>
-         <Swiper spaceBetween={30} slidesPerView={5} className='swiperList'>
+         <Swiper
+            navigation={true}
+            spaceBetween={40}
+            slidesPerView={1}
+            loop={true}
+            breakpoints={{
+               550: {
+                  slidesPerView: 1,
+                  spaceBetween: 40,
+               },
+               640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+               },
+               800: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+               },
+               1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 20,
+               },
+               1300: {
+                  slidesPerView: 5,
+                  spaceBetween: 40,
+               },
+               // 1024: {
+               //    slidesPerView: 5,
+               //    spaceBetween: 50,
+               // },
+            }}
+            modules={[Navigation]}
+            className='swiperList'
+         >
             {data &&
                data.map(({ id, name, background_image }: IGameProps, i) => {
                   return (

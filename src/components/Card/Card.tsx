@@ -50,31 +50,31 @@ const Card = ({ id, name, background_image }: IGameListProps) => {
          onMouseEnter={() => setIsHovering(true)}
          onMouseLeave={() => setIsHovering(false)}
       >
-         <motion.div
-            {...(isHovering && { ...motionProps(0, -50) })}
-            className={`about__game--top`}
-            style={!isHovering ? {display: 'none' } : {}}
-         >
-            {isHovering && gameData && (
-               <div className='about__game--top-box'>
-                  <p className='game__title'>{name}</p>
-                  <p
-                     className={`metacritic ${
-                        gameData.metacritic < 50
-                           ? 'low'
-                           : gameData.metacritic > 75
-                           ? 'high'
-                           : 'medium'
-                     }`}
-                  >
-                     {gameData.metacritic}
-                  </p>
-               </div>
-            )}
-         </motion.div>
+
+            <motion.div
+               {...(isHovering && { ...motionProps(0, -50) })}
+               className={`about__game--top`}
+            >
+               {isHovering && gameData && (
+                  <div className='about__game--top-box'>
+                     <p className='game__title'>{name}</p>
+                     <p
+                        className={`metacritic ${
+                           gameData.metacritic < 50 && gameData.metacritic > 0
+                              ? 'low'
+                              : gameData.metacritic > 75
+                              ? 'high'
+                              : 'medium'
+                        }`}
+                     >
+                        {gameData.metacritic}
+                     </p>
+                  </div>
+               )}
+            </motion.div>
 
          <Link href={`/games/[id]`} as={`/games/${id}`} className='game__image'>
-            {background_image  ? (
+            {background_image ? (
                <>
                   <Image
                      src={background_image}
@@ -84,13 +84,14 @@ const Card = ({ id, name, background_image }: IGameListProps) => {
                      className={`game__image--background`}
                   />
                </>
-            ) : <p>Carregado...</p>}
+            ) : (
+               <p>Carregado...</p>
+            )}
             {!isHovering && <h2 className='game__image--title'>{name}</h2>}
          </Link>
          <motion.div
             {...(isHovering && { ...motionProps(-5, 50) })}
             className={`about__game--bottom`}
-            style={!isHovering ? {display: 'none' } : {}}
          >
             {isHovering && gameData && (
                <div className='about__game--bottom-box'>
