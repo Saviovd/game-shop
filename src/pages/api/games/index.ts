@@ -2,16 +2,16 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { ACCESS_TOKEN } from '../config';
 
 
-const ulrGames = `https://api.rawg.io/api/games?token&key=${ACCESS_TOKEN}&page_size=30&page=1`;
-
 export default async function handler(
    req: NextApiRequest,
    res: NextApiResponse
-) {
-   try {
+   ) {
+      try {
+         const { page } = req.query;
+         const ulrGames = `https://api.rawg.io/api/games?token&key=${ACCESS_TOKEN}&page_size=20&page=${page}`;
       fetch(ulrGames)
          .then((res) => {
-            return res.json()
+            return res.json();
          })
          .then((data) => {
             res.status(200).json(data.results);

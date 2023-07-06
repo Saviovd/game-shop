@@ -8,7 +8,9 @@ export const GlobalStyle = createGlobalStyle`
    --purple: 105, 48, 195;
    --blue: 100, 223, 223;
    --green: 128, 255, 219;
-
+   --green-score: 52, 212, 49;
+   --red: 128, 37, 37;
+   --yellow: 128, 217, 37;
 }
 
 html {
@@ -38,10 +40,10 @@ html {
       }
 
       main {
-         height: 100vh;
+         /* height: 100vh;
          display: flex;
          align-self: center
-         ;
+         ;*/
       }
    }
 }`;

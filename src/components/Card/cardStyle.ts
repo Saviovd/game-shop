@@ -39,10 +39,12 @@ export const CardStyle = styled.div`
       position: absolute;
       top: 0;
       z-index: -1;
-      background-color: grey;
-      width: 100%;
+      width: 99%;
       height: 5rem;
       border-radius: 0.5rem 0.5rem 0 0;
+      border: 1px solid rgba(var(--white), .5);
+
+      background-color: rgba(var(--purple), .2);
 
       .about__game--top-box {
          display: flex;
@@ -53,6 +55,8 @@ export const CardStyle = styled.div`
          .game__title {
             margin: 0;
             font-size: 1.6rem;
+            color: rgb(var(--blue));
+            font-weight: 600;
          }
 
          .metacritic {
@@ -61,44 +65,48 @@ export const CardStyle = styled.div`
             font-size: 1.4rem;
          }
          .high {
-            color: green;
-            border: 1px solid green;
+            color: rgb(var(--green-score));
+            border: 1px solid rgb(var(--green-score));
          }
          .medium {
-            color: yellow;
-            border: 1px solid yellow;
+            color: rgb(var(--yellow));
+            border: 1px solid rgb(var(--yellow));
          }
          .low {
-            color: red;
-            border: 1px solid red;
+            color: rgb(var(--red));
+            border: 1px solid rgb(var(--red));
          }
       }
    }
 
    .about__game--bottom {
+
       position: absolute;
       bottom: 0;
       z-index: -1;
 
-      background-color: grey;
-      width: 100%;
+      width: 99%;
       min-height: 5rem;
       height: auto;
       border-radius: 0 0 0.5rem 0.5rem;
+      border: 1px solid rgba(var(--white), .5);
 
       display: flex;
       align-self: center;
       justify-content: center;
 
+         background-color: rgba(var(--purple), .2);
+
       .about__game--bottom-box {
          display: flex;
          justify-content: center;
          align-items: center;
-         /* padding: 1rem; */
          .game__website {
+            z-index: 2;
             margin: 0;
             padding: 0;
             font-size: 1.4rem;
+            color: rgb(var(--green));
          }
       }
    }
@@ -106,7 +114,7 @@ export const CardStyle = styled.div`
       content: '';
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(var(--black), 0.2);
       position: absolute;
       left: 0;
       top: 0;

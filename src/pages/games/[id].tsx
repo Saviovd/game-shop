@@ -16,7 +16,7 @@ const GamePage = ({ id }: { id: string }) => {
    const [game, setGame] = useState<IGameProps | null>(null);
 
    useEffect(() => {
-      async function getGameById() {
+      function getGameById() {
          try {
             fetch(`/api/games/${id}`)
                .then((res) => res.json())

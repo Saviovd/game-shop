@@ -53,6 +53,7 @@ const Card = ({ id, name, background_image }: IGameListProps) => {
          <motion.div
             {...(isHovering && { ...motionProps(0, -50) })}
             className={`about__game--top`}
+            style={!isHovering ? {display: 'none' } : {}}
          >
             {isHovering && gameData && (
                <div className='about__game--top-box'>
@@ -87,8 +88,9 @@ const Card = ({ id, name, background_image }: IGameListProps) => {
             {!isHovering && <h2 className='game__image--title'>{name}</h2>}
          </Link>
          <motion.div
-            {...(isHovering && { ...motionProps(0, 50) })}
+            {...(isHovering && { ...motionProps(-5, 50) })}
             className={`about__game--bottom`}
+            style={!isHovering ? {display: 'none' } : {}}
          >
             {isHovering && gameData && (
                <div className='about__game--bottom-box'>
