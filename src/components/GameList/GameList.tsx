@@ -44,14 +44,10 @@ const GameList = ({ page }: IGameListProps) => {
       <GameListStyle>
          <Swiper
             navigation={true}
-            spaceBetween={40}
-            slidesPerView={1}
+            spaceBetween={0}
+            slidesPerView={'auto'}
             loop={true}
             breakpoints={{
-               550: {
-                  slidesPerView: 1,
-                  spaceBetween: 40,
-               },
                640: {
                   slidesPerView: 2,
                   spaceBetween: 20,
@@ -64,14 +60,10 @@ const GameList = ({ page }: IGameListProps) => {
                   slidesPerView: 4,
                   spaceBetween: 20,
                },
-               1300: {
+               1600: {
                   slidesPerView: 5,
-                  spaceBetween: 40,
-               },
-               // 1024: {
-               //    slidesPerView: 5,
-               //    spaceBetween: 50,
-               // },
+                  spaceBetween: 30,
+               }
             }}
             modules={[Navigation]}
             className='swiperList'

@@ -42,9 +42,9 @@ export const CardStyle = styled.div`
       width: 99%;
       height: 5rem;
       border-radius: 0.5rem 0.5rem 0 0;
-      border: 1px solid rgba(var(--white), .5);
+      border: 1px solid rgba(var(--white), 0.5);
 
-      background-color: rgba(var(--purple), .2);
+      background-color: rgba(var(--purple), 0.2);
 
       .about__game--top-box {
          display: flex;
@@ -80,7 +80,6 @@ export const CardStyle = styled.div`
    }
 
    .about__game--bottom {
-
       position: absolute;
       bottom: 0;
       z-index: -1;
@@ -89,13 +88,13 @@ export const CardStyle = styled.div`
       min-height: 5rem;
       height: auto;
       border-radius: 0 0 0.5rem 0.5rem;
-      border: 1px solid rgba(var(--white), .5);
+      border: 1px solid rgba(var(--white), 0.5);
 
       display: flex;
       align-self: center;
       justify-content: center;
 
-         background-color: rgba(var(--purple), .2);
+      background-color: rgba(var(--purple), 0.2);
 
       .about__game--bottom-box {
          display: flex;
@@ -124,6 +123,13 @@ export const CardStyle = styled.div`
       &::after {
          width: 0;
          background-color: rgba(0, 0, 0, 0);
+      }
+   }
+
+   @media screen {
+      @media (max-width: 640px) {
+         max-width: none;
+         width: 100%;
       }
    }
 `;

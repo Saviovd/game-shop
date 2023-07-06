@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
 export const GameListStyle = styled.div`
-   width: 98vw;
+   width: 100vw;
    /* display: flex; */
    align-self: center;
-   padding: 1rem 2.5rem 0 2.5rem;
    height: 25rem;
 
    .swiperList {
+      padding: 0 5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
       .swiper__item {
          max-width: 35rem;
       }
@@ -22,16 +23,29 @@ export const GameListStyle = styled.div`
          width: 5rem;
          top: 2rem;
          border-radius: 1rem;
+         position: absolute;
+         z-index: 9;
 
          &:hover {
             background-color: rgba(var(--white), .4);
          }
       }
       .swiper-button-prev {
-         transform: translateX(-1.5rem);
+         left: -.3rem;
+         transform: translateX(-.5rem);
       }
       .swiper-button-next {
-         transform: translateX(1.5rem);
+         right: -.3rem;
+         transform: translateX(.5rem);
+      }
+
+      @media screen {
+         @media (max-width: 440px) {
+            padding: 0 4rem;
+         }
+         @media (max-width: 385px) {
+            padding: 0 3rem;
+         }
       }
    }
 `;
